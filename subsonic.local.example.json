@@ -1,0 +1,10 @@
+{
+  "serverUrl": "https://music.example.com",
+  "username": "user",
+  "password": "password",
+  "streamFormat": "mp3",
+  "maxBitRate": 320,
+  "libraryPageSize": 500,
+  "ignoreTlsCertificateErrors": false,
+  "debugLogging": false
+}

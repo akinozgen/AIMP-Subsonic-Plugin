@@ -1,0 +1,15 @@
+build/
+out/
+.vs/
+CMakeUserPresets.json
+*.user
+*.suo
+*.aps
+*.VC.db
+*.VC.VC.opendb
+*.opendb
+*.log
+aimp_subsonic.lnk
+subsonic.local.json
+cache/
+_git_backups/
