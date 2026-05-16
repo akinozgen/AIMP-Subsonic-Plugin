@@ -26,6 +26,24 @@
 - Опциональный локальный `subsonic.local.json` для разработки.
 - Диагностический лог с редактированием auth-параметров.
 
+## Скриншоты
+
+### Фонотека
+
+![Просмотр Subsonic-библиотеки в фонотеке AIMP](docs/screenshots/central_menu.png)
+
+### Структура библиотеки
+
+![Дерево Subsonic-библиотеки](docs/screenshots/structure.png)
+
+### Команды Subsonic
+
+![Контекстное меню команд Subsonic](docs/screenshots/context_menu_refresh_index.png)
+
+### Настройки
+
+![Настройки плагина Subsonic](docs/screenshots/settings.png)
+
 ## Чего нет в 1.0.0
 
 - Оффлайн-воспроизведения аудио и аудио-кеша.

@@ -26,6 +26,24 @@ This `main` branch is the stable online playback line. Direct Subsonic stream UR
 - Optional local `subsonic.local.json` fallback for development.
 - Diagnostic log with redacted auth query values.
 
+## Screenshots
+
+### Music Library
+
+![Subsonic Music Library browsing](docs/screenshots/central_menu.png)
+
+### Library Structure
+
+![Subsonic library tree structure](docs/screenshots/structure.png)
+
+### Subsonic Commands
+
+![Subsonic context menu commands](docs/screenshots/context_menu_refresh_index.png)
+
+### Settings
+
+![Subsonic plugin settings](docs/screenshots/settings.png)
+
 ## Not Included In 1.0.0
 
 - Offline audio playback/cache.
