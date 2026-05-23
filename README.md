@@ -167,4 +167,4 @@ This is the first public release. Please treat it as a practical community relea
 This plugin is developed as a free community project.
 If it is useful to you and you want to support further development, donations are appreciated.
 
-YooMoney: [support development](https://yoomoney.ru/to/4100119533917229)
+YooMoney: [support development](https://www.tbank.ru/cf/1T1sR6aWplV)
