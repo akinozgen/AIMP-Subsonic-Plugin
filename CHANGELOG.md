@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added `Subsonic -> Import Server Playlists`: server playlists are created as real AIMP playlists in the Playlist Manager, filled with direct stream URLs and full metadata. Re-running the command updates previously imported playlists (rename included) using a persistent server-to-AIMP playlist link stored next to the metadata cache; already-imported playlists are also refreshed silently on AIMP startup. Playlists you closed in AIMP are not recreated automatically; run the import command to bring them back. The import is one-way (server to AIMP).
+
 - Removed the 500-row cap in the Music Library views: Tracks, Favorites, Albums, and playlist/album/artist track lists now show the whole library. The library page size setting now only controls how many items are requested from the server per API call (`search3`/`getAlbumList2` allow at most 500); listings paginate until the server runs out of results.
 
 - Fixed `getArtists` parsing so artists from every index group are collected; Navidrome groups artists by letter, and only the first group was read before.

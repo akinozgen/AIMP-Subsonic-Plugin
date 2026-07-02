@@ -18,6 +18,7 @@ This `main` branch is the stable online playback line. Direct Subsonic stream UR
 - Background `Build / Refresh Metadata Index` command.
 - Quick search in the central Music Library table.
 - Server playlists are browsable in the Music Library; their tracks can be played or added through normal AIMP actions.
+- `Import Server Playlists` command: server playlists become real AIMP playlists in the Playlist Manager (one-way sync, refreshed on startup).
 - Subsonic now-playing and played scrobble events.
 - Cover art provider using `getCoverArt`, with a local image cache.
 - Settings page in AIMP Options: connection, playback, library, TLS, diagnostics.
@@ -48,7 +49,7 @@ This `main` branch is the stable online playback line. Direct Subsonic stream UR
 
 - Offline audio playback/cache.
 - `subsonic://` virtual cache playback.
-- Server-side playlist import, create/update/delete, and automatic playlist sync.
+- Writing playlist changes back to the server (create/update/delete); the Playlist Manager import is one-way, server to AIMP.
 - Podcasts, video, jukebox, chat, bookmarks, and OpenSubsonic-only extensions.
 
 ## Build
