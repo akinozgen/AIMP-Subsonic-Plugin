@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Removed the 500-row cap in the Music Library views: Tracks, Favorites, Albums, and playlist/album/artist track lists now show the whole library. The library page size setting now only controls how many items are requested from the server per API call (`search3`/`getAlbumList2` allow at most 500); listings paginate until the server runs out of results.
+
 - Fixed `getArtists` parsing so artists from every index group are collected; Navidrome groups artists by letter, and only the first group was read before.
 - Fixed parsing of OpenSubsonic responses (Navidrome 0.51+) that nest arrays and objects inside song/album/playlist entries (`genres`, `artists`, `replayGain`, `releaseDate`, `contributors`, ...): `getSong` returned no track and `getPlaylists`/`getPlaylist` mixed entry objects into playlist objects.
 - JSON object fields are now read only from the top level of each entry, so nested OpenSubsonic values (for example `releaseDate.year`) can no longer leak into track/album fields.

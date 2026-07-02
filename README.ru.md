@@ -107,7 +107,7 @@ AIMP\Plugins\aimp_subsonic\aimp_subsonic.dll
 
 - Stream format: `mp3`
 - Max bitrate: `320`
-- Library page size: `500`
+- Library page size: `500` (размер страницы для запросов к серверу; списки подгружаются постранично, пока не будет загружена вся библиотека)
 - Debug logging: выключено
 - Allow self-signed HTTPS certificates: выключено
 
