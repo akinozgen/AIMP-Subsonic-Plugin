@@ -107,7 +107,7 @@ Useful defaults:
 
 - Stream format: `mp3`
 - Max bitrate: `320`
-- Library page size: `500`
+- Library page size: `500` (per-request page size for server calls; listings paginate until the full library is loaded)
 - Debug logging: off
 - Allow self-signed HTTPS certificates: off
 

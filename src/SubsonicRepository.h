@@ -55,6 +55,8 @@ public:
     std::vector<PlaylistInfo> GetPlaylists() const;
     std::vector<TrackInfo> GetPlaylistTracks(const std::wstring& playlistId) const;
     std::vector<TrackInfo> SearchSongs(const std::wstring& query, int count, int offset = 0) const;
+    std::vector<TrackInfo> SearchAllSongs(const std::wstring& query) const;
+    std::vector<AlbumInfo> GetAllAlbums(const std::wstring& type) const;
     MetadataIndexBuildResult BuildMetadataIndex(const std::function<bool()>& shouldCancel = {}) const;
 
     bool Scrobble(const std::wstring& songId, bool submission) const;

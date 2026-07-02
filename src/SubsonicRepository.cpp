@@ -281,6 +281,72 @@ std::vector<TrackInfo> SubsonicRepository::SearchSongs(const std::wstring& query
     return tracks;
 }
 
+std::vector<TrackInfo> SubsonicRepository::SearchAllSongs(const std::wstring& query) const {
+    std::vector<TrackInfo> all;
+    if (!client_) {
+        return all;
+    }
+    const int pageSize = LibraryPageSize();
+    std::unordered_set<std::wstring> seenIds;
+    int offset = 0;
+    while (true) {
+        const auto page = client_->SearchSongs(query, pageSize, offset);
+        if (page.empty()) {
+            break;
+        }
+        int newTracks = 0;
+        for (const auto& track : page) {
+            if (!track.id.empty() && seenIds.insert(track.id).second) {
+                all.push_back(track);
+                ++newTracks;
+            }
+        }
+        if (static_cast<int>(page.size()) < pageSize || newTracks == 0) {
+            break;
+        }
+        offset += pageSize;
+    }
+    LogInfo(L"SearchAllSongs completed. Query='" + query +
+        L"', Tracks=" + std::to_wstring(all.size()));
+    if (query.empty() && !all.empty()) {
+        RememberAllTracks(all);
+    } else {
+        RememberTracks(all);
+    }
+    return all;
+}
+
+std::vector<AlbumInfo> SubsonicRepository::GetAllAlbums(const std::wstring& type) const {
+    std::vector<AlbumInfo> all;
+    if (!client_) {
+        return all;
+    }
+    const int pageSize = LibraryPageSize();
+    std::unordered_set<std::wstring> seenIds;
+    int offset = 0;
+    while (true) {
+        const auto page = client_->GetAlbumList2(type, pageSize, offset);
+        if (page.empty()) {
+            break;
+        }
+        int newAlbums = 0;
+        for (const auto& album : page) {
+            if (!album.id.empty() && seenIds.insert(album.id).second) {
+                all.push_back(album);
+                ++newAlbums;
+            }
+        }
+        if (static_cast<int>(page.size()) < pageSize || newAlbums == 0) {
+            break;
+        }
+        offset += pageSize;
+    }
+    LogInfo(L"GetAllAlbums completed. Type=" + type +
+        L", Albums=" + std::to_wstring(all.size()));
+    RememberAlbums(all);
+    return all;
+}
+
 MetadataIndexBuildResult SubsonicRepository::BuildMetadataIndex(const std::function<bool()>& shouldCancel) const {
     MetadataIndexBuildResult result;
     if (!client_) {
