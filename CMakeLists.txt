@@ -116,6 +116,24 @@ if(MSVC)
   target_compile_options(aimp_subsonic_node_tests PRIVATE /W4 /permissive- /EHsc)
 endif()
 
+add_executable(aimp_subsonic_json_tests EXCLUDE_FROM_ALL
+  tests/SimpleJsonNavidromeTests.cpp
+  src/SimpleJson.cpp
+  src/Url.cpp
+)
+
+target_include_directories(aimp_subsonic_json_tests PRIVATE
+  "${CMAKE_CURRENT_SOURCE_DIR}/src"
+)
+
+target_link_libraries(aimp_subsonic_json_tests PRIVATE
+  advapi32
+)
+
+if(MSVC)
+  target_compile_options(aimp_subsonic_json_tests PRIVATE /W4 /permissive- /EHsc)
+endif()
+
 add_executable(aimp_subsonic_security_tests EXCLUDE_FROM_ALL
   tests/SecurityTests.cpp
   src/AimpString.cpp
