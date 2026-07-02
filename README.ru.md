@@ -73,9 +73,10 @@ cmake --build build --config Release --target aimp_subsonic
 Сухие тесты:
 
 ```powershell
-cmake --build build --config Release --target aimp_subsonic_node_tests aimp_subsonic_security_tests
+cmake --build build --config Release --target aimp_subsonic_node_tests aimp_subsonic_security_tests aimp_subsonic_json_tests
 build\Release\aimp_subsonic_node_tests.exe
 build\Release\aimp_subsonic_security_tests.exe
+build\Release\aimp_subsonic_json_tests.exe
 ```
 
 Для 32-битного AIMP настройте проект с `-A Win32`.
@@ -109,6 +110,12 @@ AIMP\Plugins\aimp_subsonic\aimp_subsonic.dll
 - Library page size: `500`
 - Debug logging: выключено
 - Allow self-signed HTTPS certificates: выключено
+
+## Заметки о Navidrome
+
+- Плагин понимает OpenSubsonic-ответы Navidrome, включая индекс исполнителей, сгруппированный по буквам, и вложенные поля записей (`genres`, `artists`, `replayGain`, `releaseDate`).
+- Формат `mp3` требует транскодирование, то есть ffmpeg на сервере Navidrome. Если Navidrome работает без ffmpeg (или нужны оригинальные файлы без перекодирования), установите stream format в `raw`; плагин отправит `format=raw` без `maxBitRate`. AIMP воспроизводит FLAC/OGG/Opus нативно.
+- Используется токен-аутентификация (`t`/`s`), пароль в открытом виде не передаётся; Navidrome поддерживает это из коробки.
 
 Опцию самоподписанных сертификатов стоит включать только для доверенного личного сервера. Она отключает проверку TLS-сертификата для WinHTTP-запросов самого плагина. Прямые URL воспроизведения передаются в AIMP, поэтому его собственная сетевая подсистема может вести себя по-своему.
 

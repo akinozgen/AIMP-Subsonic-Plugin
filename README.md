@@ -73,9 +73,10 @@ cmake --build build --config Release --target aimp_subsonic
 Dry tests:
 
 ```powershell
-cmake --build build --config Release --target aimp_subsonic_node_tests aimp_subsonic_security_tests
+cmake --build build --config Release --target aimp_subsonic_node_tests aimp_subsonic_security_tests aimp_subsonic_json_tests
 build\Release\aimp_subsonic_node_tests.exe
 build\Release\aimp_subsonic_security_tests.exe
+build\Release\aimp_subsonic_json_tests.exe
 ```
 
 For 32-bit AIMP, configure with `-A Win32`.
@@ -109,6 +110,12 @@ Useful defaults:
 - Library page size: `500`
 - Debug logging: off
 - Allow self-signed HTTPS certificates: off
+
+## Navidrome Notes
+
+- The plugin understands Navidrome's OpenSubsonic responses, including letter-grouped artist indexes and nested entry fields such as `genres`, `artists`, `replayGain`, and `releaseDate`.
+- Stream format `mp3` asks the server to transcode, which requires ffmpeg on the Navidrome host. If your Navidrome runs without ffmpeg (or you want the original files bit-perfect), set the stream format to `raw`; the plugin then requests `format=raw` and skips `maxBitRate`. AIMP plays FLAC/OGG/Opus natively.
+- Token authentication (`t`/`s`) is used, so the plain password is never sent in requests; Navidrome supports this out of the box.
 
 Use the self-signed certificate option only for a trusted private server. It disables TLS certificate validation for the plugin's own WinHTTP requests. Direct playback URLs are handed to AIMP, so AIMP's own network stack may still apply its own TLS behavior.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased
+
+- Fixed `getArtists` parsing so artists from every index group are collected; Navidrome groups artists by letter, and only the first group was read before.
+- Fixed parsing of OpenSubsonic responses (Navidrome 0.51+) that nest arrays and objects inside song/album/playlist entries (`genres`, `artists`, `replayGain`, `releaseDate`, `contributors`, ...): `getSong` returned no track and `getPlaylists`/`getPlaylist` mixed entry objects into playlist objects.
+- JSON object fields are now read only from the top level of each entry, so nested OpenSubsonic values (for example `releaseDate.year`) can no longer leak into track/album fields.
+- Added `raw` stream format support: setting the stream format to `raw` requests the original file without transcoding and omits `maxBitRate`, which makes playback work on Navidrome servers without ffmpeg.
+- Added dry parser tests with Navidrome-shaped responses (`aimp_subsonic_json_tests`).
+
 ## 1.0.0 - Initial public release
 
 - Added a Subsonic/Navidrome music library storage for AIMP with Artists, Albums, Favorites, Tracks, and Playlists sections.
